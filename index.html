@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관악산 연주암 쉬었다, 가세요.</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* 관악산 연주암 이미지를 화면 전체 배경으로 설정 */
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('yeonjuam.jpg') no-repeat center center/69% auto;
+      color: #ffffff;
+      font-family: 'Malgun Gothic', sans-serif;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    }
+    .btn {
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>관악산 연주암</h1>
+  <p>잠시 마음을 비우고 고요함을 느껴보세요.</p>
+
+  <!-- 목탁 소리 재생 버튼 -->
+  <button class="btn" id="audioBtn">🔔 목탁 소리 듣기</button>
+
+  <!-- 오디오 태그 (loop 속성으로 반복 재생 가능) -->
+  <audio id="moktakAudio" src="moktak.mp3" loop></audio>
+
+  <script>
+    const audioBtn = document.getElementById('audioBtn');
+    const audio = document.getElementById('moktakAudio');
+    let isPlaying = false;
+
+    audioBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play();
+        audioBtn.innerText = '⏸️ 소리 멈추기';
+        isPlaying = true;
+      } else {
+        audio.pause();
+        audioBtn.innerText = '🔔 목탁 소리 듣기';
+        isPlaying = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
